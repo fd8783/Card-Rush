@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class backGroundSetting : MonoBehaviour {
 
+    public static float singleDirBonus = 1.5f;
+
     public backGroundSetting instance = null;
 
     public static int curStage = 0; //0 for Menu
 
-    public bool firstTime = true;
+    public static bool firstTime = true;
 
     private static float countBackTime = 0.6f,  //time that player must play a card after reloaded
                          maxLatePenalty = 0.4f;    //0.5f = 50%
@@ -32,7 +34,7 @@ public class backGroundSetting : MonoBehaviour {
                              weaponPlayerDisable = new List<int>();
 
     //default deck
-    public static List<int> curPlayerDeck = new List<int> { 0,0,0,10,20,20,30,31,32,0,0,0,1,2,3,4,41,10,10,43 };
+    public static List<int> curPlayerDeck = new List<int> { 0,0,0,0,0,0, 1, 2, 3, 4, 10, 10, 10, 20,20,30,31,32,41,43 };
     private static int curPlayerWeapon;
 
 	// Use this for initialization
@@ -100,13 +102,19 @@ public class backGroundSetting : MonoBehaviour {
         SceneManager.LoadScene(curStage);
     }
 
+    public void BackToMenu()
+    {
+        curStage = 0;
+        SceneManager.LoadScene(curStage);
+    }
+
     public void StartGame()
     {
         if (firstTime)
         {
             curStage = 1;
-            SceneManager.LoadScene(1);  //Tutorial
             firstTime = false;
+            SceneManager.LoadScene(1);  //Tutorial
         }
         else
         {
@@ -115,9 +123,26 @@ public class backGroundSetting : MonoBehaviour {
         }
     }
 
+    public void StartTutor()
+    {
+        curStage = 1;
+        firstTime = false;
+        SceneManager.LoadScene(1);  //Tutorial
+    }
+    
+    public void DeckModify()
+    {
+        SceneManager.LoadScene(8);
+    }
+
     public void CheckExc()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
+    }
+
+    public static void UpdateCurDeck(List<int> deckList)
+    {
+        curPlayerDeck = deckList;
     }
 }

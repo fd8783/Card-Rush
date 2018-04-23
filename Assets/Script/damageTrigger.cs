@@ -8,7 +8,8 @@ public class damageTrigger : MonoBehaviour {
 
     public float damage = 30f, pushForce = 30f;
 
-    private float penatly;
+    private float penatly, singleDirBonus;
+    private bool isCurSingleDir;
 
     private Transform root;
     [SerializeField]
@@ -20,10 +21,11 @@ public class damageTrigger : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+        singleDirBonus = backGroundSetting.singleDirBonus;
         root = transform.root;
         cardUsingScript = root.GetComponent<cardUsage>();
         bodyRB = root.GetComponent<Rigidbody2D>();
-        Debug.Log(cardUsingScript);
+        //Debug.Log(cardUsingScript);
     }
 	
 	// Update is called once per frame
@@ -35,8 +37,12 @@ public class damageTrigger : MonoBehaviour {
     {
         if (col.CompareTag(targetTag))
         {
+            isCurSingleDir = cardUsingScript.isCurSingleDir();
             penatly = cardUsingScript.GetCurPenatly();
-            col.GetComponent<health>().Hurt(damage * penatly, bodyRB.velocity * pushForce);
+            if (isCurSingleDir)
+                col.GetComponent<health>().Hurt(damage * singleDirBonus * penatly, bodyRB.velocity * singleDirBonus * pushForce);
+            else
+                col.GetComponent<health>().Hurt(damage * penatly, bodyRB.velocity * pushForce);
         }
     }
 }

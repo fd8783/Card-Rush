@@ -222,6 +222,12 @@ public class aiCardUsing : MonoBehaviour, cardUsage {
         return curPenalty;
     }
 
+    public bool isCurSingleDir()
+    {
+        //NO direction bouse for ai
+        return false;
+    }
+
     void UpdateWeaponInfo()
     {
         curWeapon = transform.Find("weapon").GetChild(0);  //first child should be using weapon, if want to vaild, we can use CompareTag as well

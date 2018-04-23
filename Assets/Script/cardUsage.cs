@@ -5,4 +5,6 @@ using UnityEngine;
 interface cardUsage {
 
     float GetCurPenatly();
+
+    bool isCurSingleDir();
 }

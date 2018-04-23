@@ -11,6 +11,7 @@ public class cardUsing : MonoBehaviour, cardUsage {
     private float shieldPower = 10f;
 
     private float reloadStartTime, reloadFinishTime, coolDownTime, curTargetDelay, curTargetAttackTime, curTargetForce, mouseAngle, targetAngle;
+    private bool singleDir =false;
     private Vector2 curTargetDir;
 
     private AudioSource[] soundList;
@@ -191,9 +192,11 @@ public class cardUsing : MonoBehaviour, cardUsage {
         coolDownTime = Time.time + curTargetAttackTime;
 
         //in C#'s substring, the second params means how long it take from string, not the end index :P
+        singleDir = true;
         switch (cardName.Substring(cardName.Length - 2, 2))
         {
             case "AD":
+                singleDir = false;
                 movementScript.StopRotate(curTargetAttackTime);
                 curTargetDir = movementCtrl.mouseDir;
                 break;
@@ -294,12 +297,17 @@ public class cardUsing : MonoBehaviour, cardUsage {
     {
         yield return new WaitForSeconds(delay);
         dashSound.Play();
-        bodyRB.AddForce(dir * force * penalty); //mouseDir stop updating once attack start
+        bodyRB.AddForce(dir * force * penalty * (singleDir ? backGroundSetting.singleDirBonus:1)); //mouseDir stop updating once attack start
     }
 
     public float GetCurPenatly()
     {
         return curPenalty;
+    }
+
+    public bool isCurSingleDir()
+    {
+        return singleDir;
     }
 
     void UpdateWeaponInfo()
