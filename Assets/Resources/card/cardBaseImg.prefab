@@ -51,7 +51,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4071272999288374}
-  - component: {fileID: 210513327674668730}
   m_Layer: 0
   m_Name: cardBaseImg
   m_TagString: Untagged
@@ -100,16 +99,6 @@ Transform:
   m_Father: {fileID: 4071272999288374}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &210513327674668730
-SortingGroup:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1739842396564052}
-  m_Enabled: 1
-  m_SortingLayerID: 238445095
-  m_SortingLayer: 4
-  m_SortingOrder: 100
 --- !u!212 &212593436451048254
 SpriteRenderer:
   m_ObjectHideFlags: 1

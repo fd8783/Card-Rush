@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: b5b97f95d448bc24982fd45b07457e5b
+timeCreated: 1512223328
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KG Primary Penmanship 2
+  fontNames:
+  - KG Primary Penmanship 2
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

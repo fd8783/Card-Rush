@@ -71,6 +71,24 @@ public class movementCtrl : MonoBehaviour {
 
     }
 
+    void Rotate(Vector2 dir)
+    {
+        ChangeDir(targetDir, (int)Mathf.Sign(dir.x), (int)Mathf.Sign(dir.y));
+
+        if (curDir[0] != targetDir[0])
+            FilpHor(targetDir[0]);
+        if (curDir[1] != targetDir[1])
+            FilpVer(targetDir[1]);
+
+        //*don't use curDir = targetDir, it change curDir's address point to targetDir because it's reference type
+        ChangeDir(curDir, targetDir);
+
+        //rotate Weapon                                            
+        mouseAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        weaponTargetRot = Quaternion.Euler(new Vector3(0f, 0f, mouseAngle * transform.localScale.x + (transform.localScale.x > 0 ? 0 : 180)));
+        weaponCtrl.localRotation = weaponTargetRot;
+    }
+
     public void StopRotate(float time)
     {
         stopRotate = true;
@@ -80,6 +98,7 @@ public class movementCtrl : MonoBehaviour {
     public void ForceRotate(Vector2 forceTargetDir, float time)
     {
         stopRotate = true;
+        Rotate(forceTargetDir);
         StartCoroutine(RotateRecover(time));
     }
 
