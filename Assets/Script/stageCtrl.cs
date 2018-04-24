@@ -22,7 +22,7 @@ public class stageCtrl : MonoBehaviour {
 	
     void Start()
     {
-        Debug.Log(playerCount + " " + enemyCount);
+        //Debug.Log(playerCount + " " + enemyCount);
     }
 
 	// Update is called once per frame

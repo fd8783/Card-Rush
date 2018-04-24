@@ -16,7 +16,7 @@ public class deckCtrl : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        Debug.Log(backGroundSetting.GetCurDeck().Count);
+        //Debug.Log(backGroundSetting.GetCurDeck().Count);
         deck = transform.Find("deck");
         usedCard = transform.Find("used");
 
