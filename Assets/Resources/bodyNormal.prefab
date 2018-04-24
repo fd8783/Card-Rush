@@ -953,12 +953,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.08769846, y: 0.18425088}
+    - - {x: 0.08418536, y: 0.24046038}
       - {x: 0.0036997795, y: 0.2114254}
       - {x: -0.054029465, y: 0.15752156}
       - {x: 0.016853392, y: 0.0036351215}
-      - {x: 0.085956216, y: -0.01405406}
-      - {x: 0.14714372, y: 0.034136236}
+      - {x: 0.09122586, y: -0.028106451}
+      - {x: 0.18051815, y: 0.01130113}
 --- !u!60 &60807242959770964
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -1453,8 +1453,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Enemy
-  damage: 20
-  pushForce: 150
+  damage: 35
+  pushForce: 50
 --- !u!114 &114633782004948944
 MonoBehaviour:
   m_ObjectHideFlags: 1
